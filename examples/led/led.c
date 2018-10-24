@@ -26,7 +26,7 @@ const int led_gpio = 2;
 bool led_on = false;
 
 void led_write(bool on) {
-    gpio_write(led_gpio, on ? 0 : 1);
+    gpio_write(led_gpio, on ? 1 : 0);
 }
 
 void led_init() {
@@ -74,16 +74,16 @@ void led_on_set(homekit_value_t value) {
 homekit_accessory_t *accessories[] = {
     HOMEKIT_ACCESSORY(.id=1, .category=homekit_accessory_category_lightbulb, .services=(homekit_service_t*[]){
         HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]){
-            HOMEKIT_CHARACTERISTIC(NAME, "Sample LED"),
-            HOMEKIT_CHARACTERISTIC(MANUFACTURER, "HaPK"),
+            HOMEKIT_CHARACTERISTIC(NAME, "Smart LED"),
+            HOMEKIT_CHARACTERISTIC(MANUFACTURER, "Cowcowwow"),
             HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "037A2BABF19D"),
-            HOMEKIT_CHARACTERISTIC(MODEL, "MyLED"),
+            HOMEKIT_CHARACTERISTIC(MODEL, "TBGSLED"),
             HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "0.1"),
             HOMEKIT_CHARACTERISTIC(IDENTIFY, led_identify),
             NULL
         }),
         HOMEKIT_SERVICE(LIGHTBULB, .primary=true, .characteristics=(homekit_characteristic_t*[]){
-            HOMEKIT_CHARACTERISTIC(NAME, "Sample LED"),
+            HOMEKIT_CHARACTERISTIC(NAME, "Smart LED"),
             HOMEKIT_CHARACTERISTIC(
                 ON, false,
                 .getter=led_on_get,
@@ -98,7 +98,7 @@ homekit_accessory_t *accessories[] = {
 
 homekit_server_config_t config = {
     .accessories = accessories,
-    .password = "111-11-111"
+    .password = "222-22-222"
 };
 
 void user_init(void) {
