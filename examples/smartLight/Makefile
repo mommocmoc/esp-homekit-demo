@@ -1,4 +1,4 @@
-PROGRAM = led
+PROGRAM = smartLight
 
 EXTRA_COMPONENTS = \
 	extras/dht \
